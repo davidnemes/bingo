@@ -1,0 +1,16 @@
+services:
+  bingo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bingo:latest
+    container_name: bingo
+    restart: always
+    ports:
+      - "127.0.0.1:3001:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

@@ -46,6 +46,9 @@ export default function LoginForm() {
           priority
           className="h-auto w-[70vw] max-w-[280px]"
         />
+        <h1 className="-mt-2 text-center text-4xl font-extrabold tracking-tight text-emerald-700">
+          Bingó
+        </h1>
         <form onSubmit={handleSubmit} className="flex w-full flex-col gap-4">
           <label htmlFor="name" className="text-sm font-medium text-stone-700">
             Add meg a neved

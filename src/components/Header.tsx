@@ -13,15 +13,20 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-stone-200 bg-[var(--background)]/95 px-4 py-3 backdrop-blur">
-      <Image
-        src="/tegezifi_logo.png"
-        alt="Tegez Ifi"
-        width={120}
-        height={120}
-        priority
-        className="h-10 w-auto"
-      />
+    <header className="sticky top-0 z-10 flex items-center justify-between border-b border-stone-200 bg-(--background)/95 px-4 py-3 backdrop-blur">
+      <div className="flex items-center gap-2">
+        <Image
+          src="/tegezifi_logo.png"
+          alt="Tegez Ifi"
+          width={120}
+          height={120}
+          priority
+          className="h-10 w-auto"
+        />
+        <span className="text-lg font-extrabold tracking-tight text-black">
+          Bingó
+        </span>
+      </div>
       <button
         type="button"
         onClick={handleLogout}
