@@ -1,8 +1,22 @@
 # Deploy — bingo.davidnemes.hu
 
+> ## ⚡ Gyors deploy (kód módosítás után)
+>
+> ```bash
+> # lokálisan
+> git push
+>
+> # VPS-en
+> cd /opt/bingo
+> git pull
+> docker compose -f docker-compose.prod.yml up -d --build
+> ```
+
+---
+
 A bingo külön Docker stackben fut a Hetzner VPS-en, az ottapont meglévő
-Caddy reverse proxy-ja mögött. A bingo container csak a `127.0.0.1:3001`
-portra köt ki — a Caddy ezen keresztül éri el.
+Caddy reverse proxy-ja mögött. A két stack egy közös `web` Docker
+network-ön keresztül kommunikál — a bingo nem publikál portot a host felé.
 
 ## 1. DNS
 
@@ -59,11 +73,22 @@ A Caddy automatikusan kér Let's Encrypt cert-et a `bingo.davidnemes.hu`-ra
 
 ## 6. Frissítés (új deploy)
 
+Lásd a fájl tetején a "Gyors deploy" blokkot. Időnként érdemes a régi
+image-eket is takarítani:
+
 ```bash
-cd /opt/bingo
-git pull
-docker compose -f docker-compose.prod.yml up -d --build
 docker image prune -f
+```
+
+Hasznos parancsok:
+
+```bash
+# Logok élőben
+docker compose -f docker-compose.prod.yml logs -f bingo
+
+# Teljes újraindítás (ha valami "elromlott")
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml up -d --build
 ```
 
 ## Tűzfal
