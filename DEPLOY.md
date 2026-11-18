@@ -52,7 +52,7 @@ Ellenőrzés:
 
 ```bash
 docker compose -f docker-compose.prod.yml ps
-docker exec bingo wget -qO- http://localhost:3000/ | head -5
+docker exec bingo wget -qO- http://127.0.0.1:3000/ | head -5
 ```
 
 ## 5. Ottapont oldali konfig
