@@ -35,12 +35,13 @@ export default function LoginForm() {
     <main className="flex min-h-screen flex-col items-center justify-center px-6 py-10">
       <div className="flex w-full max-w-sm flex-col items-center gap-8">
         <Image
-          src="/tegezifi_logo.png"
+          src="/tegezifi_logo_login.png"
           alt="Tegez Ifi"
-          width={512}
-          height={512}
+          width={560}
+          height={620}
+          sizes="(min-width: 640px) 280px, 140px"
           priority
-          className="h-auto w-[70vw] max-w-[280px]"
+          className="h-auto w-[140px] max-w-full sm:w-[280px]"
         />
         <h1 className="-mt-2 text-center text-4xl font-extrabold tracking-tight text-emerald-700">
           Bingó
