@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import QuestCard from "@/components/QuestCard";
-import { getQuestById } from "@/lib/quests";
+import { QUESTS } from "@/lib/quests";
 import { loadState, saveState, type AppState } from "@/lib/storage";
 
 export default function BingoPage() {
@@ -38,10 +38,7 @@ export default function BingoPage() {
     return <div className="min-h-screen" aria-hidden />;
   }
 
-  const completedCount = state.questIds.reduce((acc, id) => {
-    const v = state.answers[id];
-    return acc + (v && v.trim().length > 0 ? 1 : 0);
-  }, 0);
+  const completedCount = QUESTS.filter(({ id }) => state.answers[id]?.trim()).length;
 
   return (
     <div className="min-h-screen">
@@ -56,24 +53,20 @@ export default function BingoPage() {
             Egy embert csak egy állításhoz használhatsz!
           </p>
           <p className="mt-2 text-sm font-medium text-emerald-700">
-            {completedCount} / {state.questIds.length} kész
+            {completedCount} / {QUESTS.length} kész
           </p>
         </div>
 
         <div className="flex flex-col gap-3 pb-10">
-          {state.questIds.map((id, idx) => {
-            const quest = getQuestById(id);
-            if (!quest) return null;
-            return (
-              <QuestCard
-                key={id}
-                quest={quest}
-                index={idx}
-                value={state.answers[id] ?? ""}
-                onChange={(value) => handleAnswerChange(id, value)}
-              />
-            );
-          })}
+          {QUESTS.map((quest, index) => (
+            <QuestCard
+              key={quest.id}
+              quest={quest}
+              index={index}
+              value={state.answers[quest.id] ?? ""}
+              onChange={(value) => handleAnswerChange(quest.id, value)}
+            />
+          ))}
         </div>
       </main>
     </div>

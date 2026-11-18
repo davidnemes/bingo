@@ -3,8 +3,6 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { QUESTS } from "@/lib/quests";
-import { pickRandom } from "@/lib/shuffle";
 import { loadState, saveState } from "@/lib/storage";
 
 export default function LoginForm() {
@@ -25,9 +23,7 @@ export default function LoginForm() {
     e.preventDefault();
     const trimmed = name.trim();
     if (!trimmed) return;
-    const ids = QUESTS.map((q) => q.id);
-    const questIds = pickRandom(ids, 10);
-    saveState({ userName: trimmed, questIds, answers: {} });
+    saveState({ userName: trimmed, answers: {} });
     router.push("/bingo");
   };
 

@@ -3,7 +3,7 @@ export type Quest = {
   text: string;
 };
 
-export const QUESTS: Quest[] = [
+export const PREVIOUS_QUESTS: Quest[] = [
   { id: 1, text: "Több mint három éve jár ifire." },
   { id: 2, text: "Szereti a spenótot." },
   { id: 3, text: "Nem szereti a csokoládét." },
@@ -27,6 +27,21 @@ export const QUESTS: Quest[] = [
   { id: 21, text: "Elaludt már film közben." },
 ];
 
-export function getQuestById(id: number): Quest | undefined {
-  return QUESTS.find((q) => q.id === id);
-}
+export const QUESTS: Quest[] = [
+  { id: 22, text: "Itt volt már kezdés előtt 10 perccel" },
+  { id: 23, text: "El tudja mondani fejből a 23. zsoltárt" },
+  { id: 24, text: "Legalább 3 testvére van" },
+  { id: 25, text: "Van nála rágó" },
+  { id: 26, text: "Van rajta valami sárga" },
+  { id: 27, text: "Balkezes" },
+  { id: 28, text: "Sosem ivott még kávét" },
+  { id: 29, text: "Ugyanabban a hónapban született, mint te" },
+  { id: 30, text: "Tud valamilyen hangszeren játszani (nem kell profi szinten)" },
+  { id: 31, text: "Volt olyan film, amin elsírtad magad" },
+  { id: 32, text: "Szeret társasozni és otthon minimum 5 darab van neki" },
+  { id: 33, text: "Szeret röplabdázni" },
+  { id: 34, text: "Autóval érkezett" },
+  { id: 35, text: "Nem szereti a csípős ételeket" },
+  { id: 36, text: "Van háziállata" },
+  { id: 37, text: "Van otthon legalább 3 Bibliája" },
+];

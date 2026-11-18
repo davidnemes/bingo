@@ -1,6 +1,5 @@
 export type AppState = {
   userName: string;
-  questIds: number[];
   answers: Record<number, string>;
 };
 
@@ -14,13 +13,12 @@ export function loadState(): AppState | null {
     const parsed = JSON.parse(raw) as AppState;
     if (
       typeof parsed?.userName !== "string" ||
-      !Array.isArray(parsed?.questIds) ||
       typeof parsed?.answers !== "object" ||
       parsed.answers === null
     ) {
       return null;
     }
-    return parsed;
+    return { userName: parsed.userName, answers: parsed.answers };
   } catch {
     return null;
   }
